@@ -1,5 +1,4 @@
-test_that("cd_fit()` works as expected", {
-  local_edition(3)
+test_that("`cd_fit()` works as expected", {
   library(baguette)
   library(dials)
   library(dplyr)
@@ -34,5 +33,4 @@ test_that("cd_fit()` works as expected", {
       cd_fit(outcome, traindata, viralvars, logbase, seed, repetitions, gridsize, testdata, predicted)
     )
   )
-}
-)
+})

@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+
+
+<title>Trajectories of overall adherence to antiretroviral therapy</title>
+
+<script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
+// be compatible with the behavior of Pandoc < 2.8).
+document.addEventListener('DOMContentLoaded', function(e) {
+  var hs = document.querySelectorAll("div.section[class*='level'] > :first-child");
+  var i, h, a;
+  for (i = 0; i < hs.length; i++) {
+    h = hs[i];
+    if (!/^h[1-6]$/i.test(h.tagName)) continue;  // it should be a header h1-h6
+    a = h.attributes;
+    while (a.length > 0) h.removeAttribute(a[0].name);
+  }
+});
+</script>
+
+<style type="text/css">
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+</style>
+
+
+
+<style type="text/css">
+code {
+white-space: pre;
+}
+.sourceCode {
+overflow: visible;
+}
+</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+{ counter-reset: source-line 0; }
+pre.numberSource code > span
+{ position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+{ content: counter(source-line);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+color: #aaaaaa;
+}
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; padding-left: 4px; }
+div.sourceCode
+{ }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } 
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.at { color: #7d9029; } 
+code span.bn { color: #40a070; } 
+code span.bu { color: #008000; } 
+code span.cf { color: #007020; font-weight: bold; } 
+code span.ch { color: #4070a0; } 
+code span.cn { color: #880000; } 
+code span.co { color: #60a0b0; font-style: italic; } 
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.do { color: #ba2121; font-style: italic; } 
+code span.dt { color: #902000; } 
+code span.dv { color: #40a070; } 
+code span.er { color: #ff0000; font-weight: bold; } 
+code span.ex { } 
+code span.fl { color: #40a070; } 
+code span.fu { color: #06287e; } 
+code span.im { color: #008000; font-weight: bold; } 
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.kw { color: #007020; font-weight: bold; } 
+code span.op { color: #666666; } 
+code span.ot { color: #007020; } 
+code span.pp { color: #bc7a00; } 
+code span.sc { color: #4070a0; } 
+code span.ss { color: #bb6688; } 
+code span.st { color: #4070a0; } 
+code span.va { color: #19177c; } 
+code span.vs { color: #4070a0; } 
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } 
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    var j = 0;
+    while (j < rules.length) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") {
+        j++;
+        continue;
+      }
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') {
+        j++;
+        continue;
+      }
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+
+
+
+
+<style type="text/css">body {
+background-color: #fff;
+margin: 1em auto;
+max-width: 700px;
+overflow: visible;
+padding-left: 2em;
+padding-right: 2em;
+font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 14px;
+line-height: 1.35;
+}
+#TOC {
+clear: both;
+margin: 0 0 10px 10px;
+padding: 4px;
+width: 400px;
+border: 1px solid #CCCCCC;
+border-radius: 5px;
+background-color: #f6f6f6;
+font-size: 13px;
+line-height: 1.3;
+}
+#TOC .toctitle {
+font-weight: bold;
+font-size: 15px;
+margin-left: 5px;
+}
+#TOC ul {
+padding-left: 40px;
+margin-left: -1.5em;
+margin-top: 5px;
+margin-bottom: 5px;
+}
+#TOC ul ul {
+margin-left: -2em;
+}
+#TOC li {
+line-height: 16px;
+}
+table {
+margin: 1em auto;
+border-width: 1px;
+border-color: #DDDDDD;
+border-style: outset;
+border-collapse: collapse;
+}
+table th {
+border-width: 2px;
+padding: 5px;
+border-style: inset;
+}
+table td {
+border-width: 1px;
+border-style: inset;
+line-height: 18px;
+padding: 5px 5px;
+}
+table, table th, table td {
+border-left-style: none;
+border-right-style: none;
+}
+table thead, table tr.even {
+background-color: #f7f7f7;
+}
+p {
+margin: 0.5em 0;
+}
+blockquote {
+background-color: #f6f6f6;
+padding: 0.25em 0.75em;
+}
+hr {
+border-style: solid;
+border: none;
+border-top: 1px solid #777;
+margin: 28px 0;
+}
+dl {
+margin-left: 0;
+}
+dl dd {
+margin-bottom: 13px;
+margin-left: 13px;
+}
+dl dt {
+font-weight: bold;
+}
+ul {
+margin-top: 0;
+}
+ul li {
+list-style: circle outside;
+}
+ul ul {
+margin-bottom: 0;
+}
+pre, code {
+background-color: #f7f7f7;
+border-radius: 3px;
+color: #333;
+white-space: pre-wrap; 
+}
+pre {
+border-radius: 3px;
+margin: 5px 0px 10px 0px;
+padding: 10px;
+}
+pre:not([class]) {
+background-color: #f7f7f7;
+}
+code {
+font-family: Consolas, Monaco, 'Courier New', monospace;
+font-size: 85%;
+}
+p > code, li > code {
+padding: 2px 0px;
+}
+div.figure {
+text-align: center;
+}
+img {
+background-color: #FFFFFF;
+padding: 2px;
+border: 1px solid #DDDDDD;
+border-radius: 3px;
+border: 1px solid #CCCCCC;
+margin: 0 5px;
+}
+h1 {
+margin-top: 0;
+font-size: 35px;
+line-height: 40px;
+}
+h2 {
+border-bottom: 4px solid #f7f7f7;
+padding-top: 10px;
+padding-bottom: 2px;
+font-size: 145%;
+}
+h3 {
+border-bottom: 2px solid #f7f7f7;
+padding-top: 10px;
+font-size: 120%;
+}
+h4 {
+border-bottom: 1px solid #f7f7f7;
+margin-left: 8px;
+font-size: 105%;
+}
+h5, h6 {
+border-bottom: 1px solid #ccc;
+font-size: 105%;
+}
+a {
+color: #0033dd;
+text-decoration: none;
+}
+a:hover {
+color: #6666ff; }
+a:visited {
+color: #800080; }
+a:visited:hover {
+color: #BB00BB; }
+a[href^="http:"] {
+text-decoration: underline; }
+a[href^="https:"] {
+text-decoration: underline; }
+
+code > span.kw { color: #555; font-weight: bold; } 
+code > span.dt { color: #902000; } 
+code > span.dv { color: #40a070; } 
+code > span.bn { color: #d14; } 
+code > span.fl { color: #d14; } 
+code > span.ch { color: #d14; } 
+code > span.st { color: #d14; } 
+code > span.co { color: #888888; font-style: italic; } 
+code > span.ot { color: #007020; } 
+code > span.al { color: #ff0000; font-weight: bold; } 
+code > span.fu { color: #900; font-weight: bold; } 
+code > span.er { color: #a61717; background-color: #e3d2d2; } 
+</style>
+
+
+
+
+</head>
+
+<body>
+
+
+
+
+<h1 class="title toc-ignore">Trajectories of overall adherence to
+antiretroviral therapy</h1>
+
+
+
+<div id="introduction" class="section level1">
+<h1>Introduction</h1>
+<p>Principal component analysis (PCA) provides an effective statistical
+approach for exploiting the patterns in CD4 count and viral load data
+over time. The method defines a new variable related to adherence to
+antiretroviral therapy (ART) that captures information from longitudinal
+data using feature extraction properties of PCA which is demonstrated
+using data from patients who acquired HIV-1 during follow-up in an ART
+cohort and were subsequently followed prospectively from early
+infection.</p>
+<p>The PCA scores for each patient obtained by this method serve as
+informative summary statistics for the CD4-count and viral-load
+trajectories. Similar to baseline CD4 count or viral load, the first PCA
+score can be interpreted as a single-value summary measure of an
+individual’s overall treatment response to ART, but unlike most
+single-value summaries of CD4-count or viral-load trajectories, the
+first PCA score summarizes the dynamics of these quantities and reveals
+specific features of the trajectories associated with the effectiveness
+of the adherence of ART. Moreover, PCA scores are used as powerful
+prognostic factor than other common summaries when used in predictive
+analysis.</p>
+<p>Doing a PCA under tidy principles requires running the function
+<code>PCA()</code> from <code>FactoMineR</code> package on the matrix of
+scaled numeric predictor variables, and then visualizing the result
+nicely using the <code>factoextra</code> package.</p>
+<p>In general, when performing PCA, three things are wanted: 1) Look at
+the data in PC coordinates; 2) Look at the rotation matrix; and 3) Look
+at the variance explained by each principal component (PC).</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">library</span>(viruslearner)</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="fu">library</span>(FactoMineR)</span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a><span class="fu">data</span>(viral_new, <span class="at">package =</span> <span class="st">&quot;viruslearner&quot;</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a>res_pca <span class="ot">&lt;-</span> <span class="fu">PCA</span>(viral_new, <span class="at">graph =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a><span class="fu">print</span>(res_pca)</span>
+<span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a><span class="co">#&gt; **Results for the Principal Component Analysis (PCA)**</span></span>
+<span id="cb2-6"><a href="#cb2-6" tabindex="-1"></a><span class="co">#&gt; The analysis was performed on 87 individuals, described by 9 variables</span></span>
+<span id="cb2-7"><a href="#cb2-7" tabindex="-1"></a><span class="co">#&gt; *The results are available in the following objects:</span></span>
+<span id="cb2-8"><a href="#cb2-8" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb2-9"><a href="#cb2-9" tabindex="-1"></a><span class="co">#&gt;    name               description                          </span></span>
+<span id="cb2-10"><a href="#cb2-10" tabindex="-1"></a><span class="co">#&gt; 1  &quot;$eig&quot;             &quot;eigenvalues&quot;                        </span></span>
+<span id="cb2-11"><a href="#cb2-11" tabindex="-1"></a><span class="co">#&gt; 2  &quot;$var&quot;             &quot;results for the variables&quot;          </span></span>
+<span id="cb2-12"><a href="#cb2-12" tabindex="-1"></a><span class="co">#&gt; 3  &quot;$var$coord&quot;       &quot;coord. for the variables&quot;           </span></span>
+<span id="cb2-13"><a href="#cb2-13" tabindex="-1"></a><span class="co">#&gt; 4  &quot;$var$cor&quot;         &quot;correlations variables - dimensions&quot;</span></span>
+<span id="cb2-14"><a href="#cb2-14" tabindex="-1"></a><span class="co">#&gt; 5  &quot;$var$cos2&quot;        &quot;cos2 for the variables&quot;             </span></span>
+<span id="cb2-15"><a href="#cb2-15" tabindex="-1"></a><span class="co">#&gt; 6  &quot;$var$contrib&quot;     &quot;contributions of the variables&quot;     </span></span>
+<span id="cb2-16"><a href="#cb2-16" tabindex="-1"></a><span class="co">#&gt; 7  &quot;$ind&quot;             &quot;results for the individuals&quot;        </span></span>
+<span id="cb2-17"><a href="#cb2-17" tabindex="-1"></a><span class="co">#&gt; 8  &quot;$ind$coord&quot;       &quot;coord. for the individuals&quot;         </span></span>
+<span id="cb2-18"><a href="#cb2-18" tabindex="-1"></a><span class="co">#&gt; 9  &quot;$ind$cos2&quot;        &quot;cos2 for the individuals&quot;           </span></span>
+<span id="cb2-19"><a href="#cb2-19" tabindex="-1"></a><span class="co">#&gt; 10 &quot;$ind$contrib&quot;     &quot;contributions of the individuals&quot;   </span></span>
+<span id="cb2-20"><a href="#cb2-20" tabindex="-1"></a><span class="co">#&gt; 11 &quot;$call&quot;            &quot;summary statistics&quot;                 </span></span>
+<span id="cb2-21"><a href="#cb2-21" tabindex="-1"></a><span class="co">#&gt; 12 &quot;$call$centre&quot;     &quot;mean of the variables&quot;              </span></span>
+<span id="cb2-22"><a href="#cb2-22" tabindex="-1"></a><span class="co">#&gt; 13 &quot;$call$ecart.type&quot; &quot;standard error of the variables&quot;    </span></span>
+<span id="cb2-23"><a href="#cb2-23" tabindex="-1"></a><span class="co">#&gt; 14 &quot;$call$row.w&quot;      &quot;weights for the individuals&quot;        </span></span>
+<span id="cb2-24"><a href="#cb2-24" tabindex="-1"></a><span class="co">#&gt; 15 &quot;$call$col.w&quot;      &quot;weights for the variables&quot;</span></span></code></pre></div>
+<p>To look at the data in PC coordinates requires combining the PC
+coordinates with the original dataset. This is done via the
+<code>res_pca$ind$coord</code> object. The columns containing the fitted
+coordinates are called <code>Dim.1</code>, <code>Dim.2</code>, etc.</p>
+<p>The transformation of variables shown in Figure @ref(fig:plotcoords),
+in which PCA scores are prognostic factors, reflects the clinical belief
+that adherence to ART may be affected by the change and other patterns
+of CD4 counts and viral loads over time. The approach uses PCA with data
+from the entire cohort to extract the primary structure in individual
+trajectories and provides a concise summary of each trajectory (PCA
+score) to reveal clinical features of the CD4 and viral load
+trajectories that serve as an ART adherence transformed predictor
+variable.</p>
+<div class="float">
+<img src="data:image/png;base64,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" alt="PC1 vs PC2 dispersion. Specific features of the shape of ART trajectory as prognostic factor for overall treatment." />
+<div class="figcaption">PC1 vs PC2 dispersion. Specific features of the
+shape of ART trajectory as prognostic factor for overall
+treatment.</div>
+</div>
+</div>
+<div id="rotation-matrix" class="section level1">
+<h1>Rotation matrix</h1>
+<p>The rotation matrix is stored as the <code>res_pca$var$coord</code>
+object. The rotation matrix is essential for understanding the
+relationship between original variables and principal components.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a>res_pca<span class="sc">$</span>var<span class="sc">$</span>coord</span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a><span class="co">#&gt;               Dim.1       Dim.2       Dim.3        Dim.4       Dim.5</span></span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a><span class="co">#&gt; cd_2018  0.27870555 -0.04062273 -0.26163183  0.873137932  0.21538696</span></span>
+<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a><span class="co">#&gt; cd_2019  0.64518533  0.03420379 -0.12376197  0.065834990  0.24795163</span></span>
+<span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a><span class="co">#&gt; vl_2019 -0.07573479 -0.07003117  0.78505366  0.031053421  0.60176292</span></span>
+<span id="cb3-6"><a href="#cb3-6" tabindex="-1"></a><span class="co">#&gt; cd_2021  0.76117069  0.13314906  0.25218852 -0.036074808 -0.08770293</span></span>
+<span id="cb3-7"><a href="#cb3-7" tabindex="-1"></a><span class="co">#&gt; vl_2021 -0.34552296  0.74720041 -0.07602424  0.071507915  0.08454595</span></span>
+<span id="cb3-8"><a href="#cb3-8" tabindex="-1"></a><span class="co">#&gt; cd_2022  0.85936771  0.18392938  0.10428379 -0.005222839 -0.15593741</span></span>
+<span id="cb3-9"><a href="#cb3-9" tabindex="-1"></a><span class="co">#&gt; vl_2022 -0.17860498  0.82464513  0.11759695  0.051856613 -0.02878516</span></span>
+<span id="cb3-10"><a href="#cb3-10" tabindex="-1"></a><span class="co">#&gt; cd_2023  0.86609530  0.11313863  0.11020329 -0.100126342 -0.15036423</span></span>
+<span id="cb3-11"><a href="#cb3-11" tabindex="-1"></a><span class="co">#&gt; vl_2023 -0.30954010 -0.10341100  0.54940982  0.422680202 -0.58356162</span></span></code></pre></div>
+<p>A negative value indicates an inverse relationship with each PC.
+Patients with lower baseline CD4 counts contribute more to the negative
+direction of PC’s. A positive value suggests a positive relationship
+with each PC. Patients with higher baseline viral loads contribute more
+to the positive direction of PC’s.</p>
+<p>Figure @ref(fig:plotrot) shows the rotation matrix in the context of
+a plot. The correlation between a variable and a PC is used as the
+coordinates of the variable on the PC. The correlation circle plot shows
+the relationships between all variables, with positively correlated
+variables shown grouped together, negatively correlated variables are
+positioned on opposite sides of the plot origin (opposed quadrants), and
+the distance between variables and the origin measures the quality of
+the variables on the factor map.</p>
+<div class="float">
+<img src="data:image/png;base64,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" alt="Distribution of patients in the PC1 vs PC2 space. Contributions of baseline and longitudinal measures are reflected by the directions and magnitudes of the arrows." />
+<div class="figcaption">Distribution of patients in the PC1 vs PC2
+space. Contributions of baseline and longitudinal measures are reflected
+by the directions and magnitudes of the arrows.</div>
+</div>
+<p>Patients with lower baseline values are positioned more towards the
+negative direction of PC1 and patients with higher baseline values are
+positioned more towards the positive direction of PC1. Patients with
+slightly decreasing baseline values are positioned more towards the
+negative direction of PC2, and those with slightly increasing baseline
+values are positioned more towards the positive direction of PC2.</p>
+<p>Patients with similar patterns in CD4 counts and viral loads are
+likely to cluster together in the PC1 vs PC2 dispersion graph with the
+direction of the contribution values indicating how each variable
+influences the position of patients along PC1 and PC2 axes. Lower
+baseline CD4 counts, higher baseline viral loads, decreasing CD4 counts,
+and decreasing viral loads tend to be grouped together based on the
+negative directions of PC1 and PC2. Conversely, slightly decreasing
+baseline CD4 counts, slightly increasing baseline viral loads,
+decreasing CD4 counts, and increasing viral loads are grouped together
+based on the positive directions of PC1 and PC2.</p>
+</div>
+<div id="variance-explained-by-each-pc" class="section level1">
+<h1>Variance explained by each PC</h1>
+<p>The variance explained by each PC can be extracted via the function
+<code>get_eigenvalue</code>.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a>eig_val <span class="ot">&lt;-</span> <span class="fu">get_eigenvalue</span>(res_pca)</span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a>eig_val</span>
+<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a><span class="co">#&gt;       eigenvalue variance.percent cumulative.variance.percent</span></span>
+<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a><span class="co">#&gt; Dim.1  2.8147923        31.275470                    31.27547</span></span>
+<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a><span class="co">#&gt; Dim.2  1.3211254        14.679171                    45.95464</span></span>
+<span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a><span class="co">#&gt; Dim.3  1.1081563        12.312848                    58.26749</span></span>
+<span id="cb4-7"><a href="#cb4-7" tabindex="-1"></a><span class="co">#&gt; Dim.4  0.9654834        10.727593                    68.99508</span></span>
+<span id="cb4-8"><a href="#cb4-8" tabindex="-1"></a><span class="co">#&gt; Dim.5  0.8731286         9.701429                    78.69651</span></span>
+<span id="cb4-9"><a href="#cb4-9" tabindex="-1"></a><span class="co">#&gt; Dim.6  0.6741441         7.490490                    86.18700</span></span>
+<span id="cb4-10"><a href="#cb4-10" tabindex="-1"></a><span class="co">#&gt; Dim.7  0.5923136         6.581263                    92.76826</span></span>
+<span id="cb4-11"><a href="#cb4-11" tabindex="-1"></a><span class="co">#&gt; Dim.8  0.4196698         4.662998                    97.43126</span></span>
+<span id="cb4-12"><a href="#cb4-12" tabindex="-1"></a><span class="co">#&gt; Dim.9  0.2311864         2.568738                   100.00000</span></span></code></pre></div>
+<p>And is shown in the context of a plot in Figure
+@ref(fig:plotvarpc).</p>
+<div class="float">
+<img src="data:image/png;base64,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" alt="Variance captured by each PC. Together, PC1 and PC2 provide structure into the factors influencing ART adherence and treatment effectiveness." />
+<div class="figcaption">Variance captured by each PC. Together, PC1 and
+PC2 provide structure into the factors influencing ART adherence and
+treatment effectiveness.</div>
+</div>
+<p>The first component captures 45.2% of the variation in the data and
+together with the second component approximately 80% of the variability
+is captured. Eigenvalue greater than 1 indicate those PCs that account
+for more variance than accounted by one of the original variables in
+standarized data, so it becomes a commonly used cutoff point for which
+PCs are retained.</p>
+</div>
+<div id="pcs-and-other-variables-in-the-data" class="section level1">
+<h1>PC’s and other variables in the data</h1>
+<p>The association of the outcome features (cd_2022 and vl_2022) of the
+data with the first two principal components is shown in the scatter
+plots of Figure @ref(fig:outvspc).</p>
+<div class="float">
+<img src="data:image/png;base64,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" alt="Outcome variables vs first two PC’s. A, Association of PC1 with cd_2022. B, Association of PC1 with vl_2022. C, Association of PC2 with cd_2022. D, Association of PC2 with vl_2022." />
+<div class="figcaption">Outcome variables vs first two PC’s. A,
+Association of PC1 with cd_2022. B, Association of PC1 with vl_2022. C,
+Association of PC2 with cd_2022. D, Association of PC2 with
+vl_2022.</div>
+</div>
+</div>
+<div id="individual-coordinates-as-scores" class="section level1">
+<h1>Individual coordinates as scores</h1>
+<p>The extracted coordinates for the individual observations serve as
+the transformed variable for scoring the adherence to ART. These values
+get stored in the <code>res_pca$ind$coord</code> object.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a>res_pca<span class="sc">$</span>ind<span class="sc">$</span>coord</span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a><span class="co">#&gt;          Dim.1         Dim.2        Dim.3       Dim.4         Dim.5</span></span>
+<span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a><span class="co">#&gt; 1  -0.98870520 -0.5405155102 -0.383502511  0.11758005  0.3573502180</span></span>
+<span id="cb5-4"><a href="#cb5-4" tabindex="-1"></a><span class="co">#&gt; 2  -0.68151256 -0.3917371875 -0.536657820  0.63130683  0.2126490172</span></span>
+<span id="cb5-5"><a href="#cb5-5" tabindex="-1"></a><span class="co">#&gt; 3   0.57755011  0.0003973339 -0.100869418 -0.09672156 -0.0800287624</span></span>
+<span id="cb5-6"><a href="#cb5-6" tabindex="-1"></a><span class="co">#&gt; 4   2.43507136  0.4466142907  0.699071390 -0.52886808 -0.6855489745</span></span>
+<span id="cb5-7"><a href="#cb5-7" tabindex="-1"></a><span class="co">#&gt; 5   0.19217912 -0.1142184061 -0.028523841  0.21826272 -0.1810635238</span></span>
+<span id="cb5-8"><a href="#cb5-8" tabindex="-1"></a><span class="co">#&gt; 6  -1.51331100 -0.5031996885 -0.448863209 -0.04448105  0.2568046717</span></span>
+<span id="cb5-9"><a href="#cb5-9" tabindex="-1"></a><span class="co">#&gt; 7   1.40048059 -0.5320656166 -2.337653919  7.53067393  1.9670461536</span></span>
+<span id="cb5-10"><a href="#cb5-10" tabindex="-1"></a><span class="co">#&gt; 8   1.55749377  0.1253492882  0.284136941 -0.07535803 -0.2796376847</span></span>
+<span id="cb5-11"><a href="#cb5-11" tabindex="-1"></a><span class="co">#&gt; 9  -1.64727635 -0.5781447220 -0.482786717 -0.27219243  0.1612452440</span></span>
+<span id="cb5-12"><a href="#cb5-12" tabindex="-1"></a><span class="co">#&gt; 10 -1.67709265 -0.6461470595 -0.616179382 -0.36691068  0.4267772631</span></span>
+<span id="cb5-13"><a href="#cb5-13" tabindex="-1"></a><span class="co">#&gt; 11 -2.68138741 -0.7014226723 -0.533090186 -0.42818750 -0.0446504283</span></span>
+<span id="cb5-14"><a href="#cb5-14" tabindex="-1"></a><span class="co">#&gt; 12 -0.34904282 -0.3529301054 -0.553990858 -0.11787367  0.4174126575</span></span>
+<span id="cb5-15"><a href="#cb5-15" tabindex="-1"></a><span class="co">#&gt; 13  3.05438607  0.3235781005 -0.323566625  0.40517362  0.1227363909</span></span>
+<span id="cb5-16"><a href="#cb5-16" tabindex="-1"></a><span class="co">#&gt; 14 -1.31307839  0.5159140137  0.900200003 -0.16693948  1.1948880288</span></span>
+<span id="cb5-17"><a href="#cb5-17" tabindex="-1"></a><span class="co">#&gt; 15  0.41711257 -0.1168868326 -0.043978876 -0.17905349 -0.1864074227</span></span>
+<span id="cb5-18"><a href="#cb5-18" tabindex="-1"></a><span class="co">#&gt; 16  0.40319571 -0.1713163002 -0.557921669  0.61280572  0.6199189632</span></span>
+<span id="cb5-19"><a href="#cb5-19" tabindex="-1"></a><span class="co">#&gt; 17 -1.44667518  0.0311466462 -0.224201788 -0.37717503  0.1422834188</span></span>
+<span id="cb5-20"><a href="#cb5-20" tabindex="-1"></a><span class="co">#&gt; 18  1.32279186  0.0716430706 -0.023473630  0.11602289 -0.0850725955</span></span>
+<span id="cb5-21"><a href="#cb5-21" tabindex="-1"></a><span class="co">#&gt; 19 -1.18967950 -0.4688077427 -0.384614984 -0.31641020  0.0140775889</span></span>
+<span id="cb5-22"><a href="#cb5-22" tabindex="-1"></a><span class="co">#&gt; 20  2.44633402  0.2508076295  0.039074793  0.18016519  0.0383323379</span></span>
+<span id="cb5-23"><a href="#cb5-23" tabindex="-1"></a><span class="co">#&gt; 21  0.62139003  0.0502922717  0.322809044 -0.81226127 -0.7921883905</span></span>
+<span id="cb5-24"><a href="#cb5-24" tabindex="-1"></a><span class="co">#&gt; 22  0.38001562 -0.1303155323 -0.250956909  0.62257892 -0.0560720836</span></span>
+<span id="cb5-25"><a href="#cb5-25" tabindex="-1"></a><span class="co">#&gt; 23  0.48687394  0.0806233493 -0.027685311 -0.51955124 -0.3001967630</span></span>
+<span id="cb5-26"><a href="#cb5-26" tabindex="-1"></a><span class="co">#&gt; 24 -1.79190896 -0.5895877612 -0.429458041 -0.47314270 -0.0829786697</span></span>
+<span id="cb5-27"><a href="#cb5-27" tabindex="-1"></a><span class="co">#&gt; 25  0.12407424 -0.3117160968 -0.296564871 -0.04460880  0.2570393396</span></span>
+<span id="cb5-28"><a href="#cb5-28" tabindex="-1"></a><span class="co">#&gt; 26  1.55601245 -0.0069240447 -0.653396942  0.36426775  0.5093770890</span></span>
+<span id="cb5-29"><a href="#cb5-29" tabindex="-1"></a><span class="co">#&gt; 27  0.22951246 -0.1510644844  0.019957383 -0.28813007 -0.1457492868</span></span>
+<span id="cb5-30"><a href="#cb5-30" tabindex="-1"></a><span class="co">#&gt; 28  0.57390223  0.0046820600  0.046540072 -0.43762365 -0.3902294005</span></span>
+<span id="cb5-31"><a href="#cb5-31" tabindex="-1"></a><span class="co">#&gt; 29  0.73309854 -0.1101504847 -0.276041977  1.01379683 -0.0271487190</span></span>
+<span id="cb5-32"><a href="#cb5-32" tabindex="-1"></a><span class="co">#&gt; 30 -4.62647652 -1.5830336096  5.353325336  3.81577233 -5.0454807764</span></span>
+<span id="cb5-33"><a href="#cb5-33" tabindex="-1"></a><span class="co">#&gt; 31  0.53180432 -0.0395805398  0.115362542 -0.72131663 -0.4635237465</span></span>
+<span id="cb5-34"><a href="#cb5-34" tabindex="-1"></a><span class="co">#&gt; 32 -0.87666139 -0.4228828798 -0.276286449 -0.21336956  0.0129220628</span></span>
+<span id="cb5-35"><a href="#cb5-35" tabindex="-1"></a><span class="co">#&gt; 33  1.77438416  0.1777073962 -0.069467327  0.48157466 -0.0812141341</span></span>
+<span id="cb5-36"><a href="#cb5-36" tabindex="-1"></a><span class="co">#&gt; 34  0.74548656 -0.0367837441 -0.059557020  0.01273757 -0.0785535028</span></span>
+<span id="cb5-37"><a href="#cb5-37" tabindex="-1"></a><span class="co">#&gt; 35 -0.62274769 -0.3441353458 -0.202906963 -0.12698436 -0.0827287253</span></span>
+<span id="cb5-38"><a href="#cb5-38" tabindex="-1"></a><span class="co">#&gt; 36  2.36639454  0.2830740834  0.482457920 -0.16748537 -0.4061329146</span></span>
+<span id="cb5-39"><a href="#cb5-39" tabindex="-1"></a><span class="co">#&gt; 37 -0.25158190 -0.3276692868 -0.486333352 -0.01520842  0.7739732192</span></span>
+<span id="cb5-40"><a href="#cb5-40" tabindex="-1"></a><span class="co">#&gt; 38 -1.31337910 -0.4043508899 -0.129280826 -0.60200783 -0.1982142235</span></span>
+<span id="cb5-41"><a href="#cb5-41" tabindex="-1"></a><span class="co">#&gt; 39 -2.14767808  8.3465508538  0.930016658  0.52344357 -0.5234965121</span></span>
+<span id="cb5-42"><a href="#cb5-42" tabindex="-1"></a><span class="co">#&gt; 40  0.85515110  0.0266804074  0.265865181 -0.40060584 -0.4398120854</span></span>
+<span id="cb5-43"><a href="#cb5-43" tabindex="-1"></a><span class="co">#&gt; 41  0.55270440 -0.0792691160  0.007468191 -0.14163775 -0.2321123096</span></span>
+<span id="cb5-44"><a href="#cb5-44" tabindex="-1"></a><span class="co">#&gt; 42 -1.20220290 -0.4900904558 -0.372030506 -0.42609660  0.0352072741</span></span>
+<span id="cb5-45"><a href="#cb5-45" tabindex="-1"></a><span class="co">#&gt; 43 -0.83946495 -0.3412849549 -0.161729926 -0.42599418 -0.1711841934</span></span>
+<span id="cb5-46"><a href="#cb5-46" tabindex="-1"></a><span class="co">#&gt; 44  0.39343074 -0.1939855459 -0.346757257 -0.13461730  0.2219048244</span></span>
+<span id="cb5-47"><a href="#cb5-47" tabindex="-1"></a><span class="co">#&gt; 45 -1.45420619 -0.5016847594 -0.196978869 -0.57656854 -0.0177663974</span></span>
+<span id="cb5-48"><a href="#cb5-48" tabindex="-1"></a><span class="co">#&gt; 46  0.48486528 -0.0204741505 -0.069404591 -0.47503675 -0.0887807342</span></span>
+<span id="cb5-49"><a href="#cb5-49" tabindex="-1"></a><span class="co">#&gt; 47 -4.91847286  5.4350935095 -1.126008885  0.51424312  0.9472752765</span></span>
+<span id="cb5-50"><a href="#cb5-50" tabindex="-1"></a><span class="co">#&gt; 48  1.13479028  0.1370867673  0.264652052 -0.07473402 -0.8316267457</span></span>
+<span id="cb5-51"><a href="#cb5-51" tabindex="-1"></a><span class="co">#&gt; 49  2.27879028  0.2770138821 -0.120278510 -0.16561978 -0.4332859531</span></span>
+<span id="cb5-52"><a href="#cb5-52" tabindex="-1"></a><span class="co">#&gt; 50  2.71605796  0.2629746063  0.185099586  0.27460016  0.0956020524</span></span>
+<span id="cb5-53"><a href="#cb5-53" tabindex="-1"></a><span class="co">#&gt; 51  0.23240636 -0.0369567364  0.339201950 -0.74403402 -0.5957382520</span></span>
+<span id="cb5-54"><a href="#cb5-54" tabindex="-1"></a><span class="co">#&gt; 52 -0.40654486 -0.2129938055  0.007364296 -0.51889936 -0.4270906197</span></span>
+<span id="cb5-55"><a href="#cb5-55" tabindex="-1"></a><span class="co">#&gt; 53  1.24428239  0.1493784888 -0.031411269 -0.48587751 -0.2972151901</span></span>
+<span id="cb5-56"><a href="#cb5-56" tabindex="-1"></a><span class="co">#&gt; 54 -0.29539979 -0.2117351780 -0.012914211 -0.13535101 -0.3680289293</span></span>
+<span id="cb5-57"><a href="#cb5-57" tabindex="-1"></a><span class="co">#&gt; 55 -0.83044701 -0.3450922252 -0.229181356 -0.26270782 -0.0421493294</span></span>
+<span id="cb5-58"><a href="#cb5-58" tabindex="-1"></a><span class="co">#&gt; 56 -1.05362652 -0.4926583759 -0.453822550  0.07096787  0.1738621313</span></span>
+<span id="cb5-59"><a href="#cb5-59" tabindex="-1"></a><span class="co">#&gt; 57  0.01031647 -0.2307256977 -0.338203562  0.22398656  0.1209286166</span></span>
+<span id="cb5-60"><a href="#cb5-60" tabindex="-1"></a><span class="co">#&gt; 58  1.60733633  0.1558112991  0.141661709 -0.45410522 -0.2835030517</span></span>
+<span id="cb5-61"><a href="#cb5-61" tabindex="-1"></a><span class="co">#&gt; 59 -2.73214608 -0.8254271651 -0.614658499 -0.46792962  0.3046034945</span></span>
+<span id="cb5-62"><a href="#cb5-62" tabindex="-1"></a><span class="co">#&gt; 60  0.74642343 -0.0768789780  0.067742274 -0.19745048 -0.2340123804</span></span>
+<span id="cb5-63"><a href="#cb5-63" tabindex="-1"></a><span class="co">#&gt; 61 -1.22977262 -0.4115264528 -0.063764598 -0.62886181 -0.2280905536</span></span>
+<span id="cb5-64"><a href="#cb5-64" tabindex="-1"></a><span class="co">#&gt; 62  0.71621951 -0.0294710947 -0.012392441 -0.18788655 -0.2850253030</span></span>
+<span id="cb5-65"><a href="#cb5-65" tabindex="-1"></a><span class="co">#&gt; 63 -1.23238510 -0.4517404722 -0.547464672  0.07551622  0.1127870993</span></span>
+<span id="cb5-66"><a href="#cb5-66" tabindex="-1"></a><span class="co">#&gt; 64 -1.10159090 -0.5078295697 -0.719780641 -0.14225313  0.5863538021</span></span>
+<span id="cb5-67"><a href="#cb5-67" tabindex="-1"></a><span class="co">#&gt; 65  0.58735640 -0.0685325227 -0.044355792 -0.26500383 -0.0040050172</span></span>
+<span id="cb5-68"><a href="#cb5-68" tabindex="-1"></a><span class="co">#&gt; 66  1.00314451 -0.0288961090  0.071213248 -0.18368757 -0.0972814613</span></span>
+<span id="cb5-69"><a href="#cb5-69" tabindex="-1"></a><span class="co">#&gt; 67  0.79295082  0.0678617926  0.112018151 -0.30775994 -0.1565951400</span></span>
+<span id="cb5-70"><a href="#cb5-70" tabindex="-1"></a><span class="co">#&gt; 68 -2.71981554 -0.7944818559 -0.695617684  0.03478114  0.0283567255</span></span>
+<span id="cb5-71"><a href="#cb5-71" tabindex="-1"></a><span class="co">#&gt; 69 -0.16434052 -0.3126216383 -0.547949389 -0.13846149  0.2903203341</span></span>
+<span id="cb5-72"><a href="#cb5-72" tabindex="-1"></a><span class="co">#&gt; 70  3.93328382  0.6072039993  0.313854170  0.52356243 -0.3724959129</span></span>
+<span id="cb5-73"><a href="#cb5-73" tabindex="-1"></a><span class="co">#&gt; 71 -2.06398342 -0.6271244583 -0.266960841 -0.58047286 -0.1158176662</span></span>
+<span id="cb5-74"><a href="#cb5-74" tabindex="-1"></a><span class="co">#&gt; 72  0.40636505 -0.1103113427 -0.299305868  0.07230995  0.2284518215</span></span>
+<span id="cb5-75"><a href="#cb5-75" tabindex="-1"></a><span class="co">#&gt; 73 -0.30923708  0.2077146091 -0.252024774 -0.06269505  0.2561422396</span></span>
+<span id="cb5-76"><a href="#cb5-76" tabindex="-1"></a><span class="co">#&gt; 74 -1.90970358 -0.4929084137 -0.131379749 -0.52761419 -0.4296979594</span></span>
+<span id="cb5-77"><a href="#cb5-77" tabindex="-1"></a><span class="co">#&gt; 75  1.98265024  0.3976080356  0.850942882 -0.74286984 -1.1541846965</span></span>
+<span id="cb5-78"><a href="#cb5-78" tabindex="-1"></a><span class="co">#&gt; 76 -3.09730941 -0.8451052258 -0.605125093  0.06885556  0.3872850584</span></span>
+<span id="cb5-79"><a href="#cb5-79" tabindex="-1"></a><span class="co">#&gt; 77 -1.37492155 -0.5191609467 -0.374699021 -0.25565095  0.0003256777</span></span>
+<span id="cb5-80"><a href="#cb5-80" tabindex="-1"></a><span class="co">#&gt; 78  3.09281666  0.4757441197  0.492893156 -0.11716075 -0.5384380202</span></span>
+<span id="cb5-81"><a href="#cb5-81" tabindex="-1"></a><span class="co">#&gt; 79  2.20764458  0.3445328342  0.095728043 -0.07602299 -0.3573542786</span></span>
+<span id="cb5-82"><a href="#cb5-82" tabindex="-1"></a><span class="co">#&gt; 80 -0.86556815 -0.4551266749  0.853133716 -0.25119432  1.1167943694</span></span>
+<span id="cb5-83"><a href="#cb5-83" tabindex="-1"></a><span class="co">#&gt; 81  4.36106362  0.6709446328  0.494252043  0.33963788 -0.2263232092</span></span>
+<span id="cb5-84"><a href="#cb5-84" tabindex="-1"></a><span class="co">#&gt; 82 -0.72834646 -0.3606536878 -0.358613386 -0.15867011  0.1403901733</span></span>
+<span id="cb5-85"><a href="#cb5-85" tabindex="-1"></a><span class="co">#&gt; 83  0.85408000  1.0833476133  0.248846014 -0.28400861 -0.2581958862</span></span>
+<span id="cb5-86"><a href="#cb5-86" tabindex="-1"></a><span class="co">#&gt; 84 -0.80503884 -0.5735560973 -1.026307994  0.48184166  1.1058518237</span></span>
+<span id="cb5-87"><a href="#cb5-87" tabindex="-1"></a><span class="co">#&gt; 85 -0.67080711 -0.4005282405 -0.354056712 -0.37497694  0.1570103861</span></span>
+<span id="cb5-88"><a href="#cb5-88" tabindex="-1"></a><span class="co">#&gt; 86 -0.14576387 -0.5495637998  6.891136868 -0.16009620  5.6521120979</span></span>
+<span id="cb5-89"><a href="#cb5-89" tabindex="-1"></a><span class="co">#&gt; 87  1.14561551  0.1666053059  0.214964455 -0.40199106 -0.5442704268</span></span></code></pre></div>
+</div>
+
+
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

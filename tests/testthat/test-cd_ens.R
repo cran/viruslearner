@@ -1,5 +1,4 @@
 test_that("`cd_ens()` works as expected", {
-  local_edition(3)
   library(baguette)
   library(dials)
   library(dplyr)
@@ -25,10 +24,10 @@ test_that("`cd_ens()` works as expected", {
   seed <- 1501
   repetitions <- 2
   gridsize <- 1
+  set.seed(123)
   expect_snapshot(
     print(
-      cd_ens(outcome, traindata, viralvars, logbase, seed, repetitions, gridsize)
+      cd_ens(outcome, traindata, viralvars, logbase, seed, repetitions, gridsize, mode = TRUE, type = TRUE) 
     )
   )
-}
-)
+})

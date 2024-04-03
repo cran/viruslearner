@@ -1,0 +1,96 @@
+---
+title: "Cell recovery under antiretroviral therapy"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{cd-recovery}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+    
+# Introduction
+
+For the second quarter of 2023, it is estimated that 125,527 people living with human immunodeficiency virus (HIV) are on antiretroviral treatment with active status, according to the Secretary of Health in Mexico. CD4 T cells percentages at different times have been consistently identified as correlates of CD4 T cell recovery. CD4 T cell proportions, along with other accessible variables, could serve as predictors for the immunological response to antiretroviral therapy (ART) in patients with advanced HIV infection.
+
+
+To create accessible variables for predictors of CD4 T cell recovery and viral load, the `tidyverse` suite can be used for data transformation, and the `viraldomain` package can be used to access CD4 counts and viral load data. The goal is to calculate recovery rates for each consecutive year, taking both 2019 and 2021 as basal counts, considering one year and two year change rates.
+
+```{r basal, message=FALSE}
+library(tidyverse)
+library(viraldomain)
+data(viral, package = "viraldomain")
+recovery_rates <- viral |>
+  mutate(
+    recovery_rate_2021 = (cd_2021 - cd_2019) / cd_2019,
+    recovery_rate_2022 = (cd_2022 - cd_2021) / cd_2021,
+    recovery_rate_2022_2yr = (cd_2022 - cd_2019) / cd_2019,
+    viral_rate_2021 = (vl_2021 - vl_2019) / (vl_2019+1),
+    viral_rate_2022 = (vl_2022 - vl_2021) / (vl_2021+1),
+    viral_rate_2022_2yr = (vl_2022 - vl_2019) / (vl_2019+1)
+  )
+```
+
+
+# Patient data
+
+Data processing followed 35 patients under ART during three years: 2019, 2021 and 2022. Twenty two patients had reached undetectable viral load (VL) by year 2022, and had available CD4 T cell counts at each year. Data were obtained from routine laboratory tests of HIV treatment follow-up. 
+
+```{r longplot, echo = FALSE, fig.cap="Cohort’s response to ART from 2019 to 2022. A, Viral load (HIV RNA copies/mL blood). B, CD4 T cell count (cells/mm3 blood)"}
+library(ggpubr)
+library(tidyr)
+ggarrange(
+  viral |>
+    pivot_longer(cols = starts_with("vl_"), names_to = "year_vl", values_to = "VL") |>
+    ggplot(aes(x = year_vl, y = log10(VL+1))) + 
+    geom_boxplot() + 
+    labs(x = "Year", y = "Log10(HIV RNA copies/mL)") + 
+    theme_bw(),
+  viral |>
+    pivot_longer(cols = starts_with("cd_"), names_to = "year_cd", values_to = "CD") |>
+    ggplot(aes(x = year_cd, y = CD)) + 
+    geom_boxplot() + 
+    labs(x = "Year", y = "CD4T cells/mm^3 blood") + 
+    theme_bw(),
+  labels = c("A", "B"), nrow = 2
+  )
+```
+
+Figure 1 A shows viral loads in 2019 have a range from 0 to 38961, with a median of 93. In 2021, there is a notable increase in viral loads, with a median of 262 and a maximum of 516675. Viral loads in 2022 show a similar pattern to 2021, with some patients having high values.
+
+The majority of patients had non-zero viral loads in 2019, with a wide range. In 2021, there is a substantial increase in viral loads for several patients. Viral loads in 2022 show variability, with the mean behavior achieving undetectable viral load and many patients showing low values and few others showing persistence with previous years, though these values act as outliers and they could be due to random noise in the cohort since they belong to patients with viral loads higher than average.
+
+In Figure 1 B, the median CD4 count in 2019 is 494, showing a central tendency. In 2021, the median CD4 count is 454, indicating relatively stable counts compared to 2019. The median CD4 count in 2022 is 547, showing a potential increase compared to 2021.
+
+One patient stands out with a remarkably high CD4 count of 1960 in 2021, potentially indicating a unique response to treatment. Only two patients maintain relatively stable CD4 counts over the observed years, one patient experiences a significant drop in CD4 count from 2021 to 2022, but the rest of the cohort shows a cell count increase.
+
+```{r rateplot, echo = FALSE, fig.cap="Patterns of HIV Viral Dynamics in Response to Treatment. A, Viral Load Change Rates Across Years. B, Longitudinal Analysis of CD4 T Cell Recovery Rates Over Time."}
+ggarrange(
+  recovery_rates |>
+    pivot_longer(cols = starts_with("viral_"), names_to = "year_vr", values_to = "VR") |>
+    ggplot(aes(x = year_vr, y = log10(VR+1))) + 
+    geom_boxplot() + 
+    labs(x = "Year", y = "Viral load change rate") + 
+    theme_bw(),
+  recovery_rates |>
+    pivot_longer(cols = starts_with("recovery_"), names_to = "year_rr", values_to = "RR") |>
+    ggplot(aes(x = year_rr, y = RR)) + 
+    geom_boxplot() + 
+    labs(x = "Year", y = "CD4T Cell Recovery Rate") + 
+    theme_bw(),
+  labels = c("A", "B"), nrow = 2
+  )
+```
+
+Now, Figure 2 A displays the viral change rates, exhibiting diverse patterns across patients. Notable variations are observed in the 1-year and 2-year differences. The longitudinal trends for the 2021 viral rates show a range from -0.99 to 49248.00, indicating significant variability. The majority of values are negative, with some extreme positive values, indicating a stabilization towards undetectable load but with some persistence on viral activity. The 2022 viral rate ranges from -0.9999 to 79.5529, showcasing a diminished spectrum. Positive values indicate an increase, while negative values suggest a decrease, with the mean behavior pointing towards an overall decrease in rates. The 2022 viral rate with a 2-Year difference also exhibits a wide range from -1.00 to 49248.00, emphasizing the impact of longer-term changes. Notable positive and negative values reflect diverse responses. Seasonality shows some patients with consistent trends over the short term, while others exhibit fluctuations over a more extended period. Short-term seasonality is evident in rapid changes, while long-term patterns vary widely. Extreme values, such as 49248.00, may indicate outliers or specific responses to treatment interventions and potential influencing factors.
+
+In Figure 2 B, CD4 T cell count recovery rates show a range of positive and negative values, showing a substantial variability is observed across patients, reflecting diverse responses to treatment. The longitudinal trend for the 2021 recovery rate ranges from -0.70250 to 2.52518, both positive and negative values indicate varying rates of improvement or decline. The 2022 recovery rate ranges from -0.61631 to 1.27523. The mean suggests an overall positive trend, with more patients experiencing improvement. The 2022 recovery rate with a 2-Year difference presents a range from -0.628655 to 0.741935, emphasizing longer-term changes. The mean is close to zero, suggesting a stabilizing effect over the two-year period. Short-term fluctuations in recovery rates may be indicative of response variations to ART interventions. Long-term stability, as indicated by the mean of the 2-year recovery rate, suggests a potential stabilizing effect of ART.
+
+The effect on the mean recovery rate for 2022 (2-Year) being close to zero may indicate a stabilizing effect of ART on CD4 T cell counts over a longer duration. THe majority of patients show consistent positive recovery trends, while others exhibit fluctuations. Extreme positive values indicate a substantial increase in cell recovery, which can be considered beneficial for overall health. These high positive values suggest a significant improvement in CD4 T cell counts for the corresponding patients. Patients with recovery rates significantly above the mean and closer to 2.52518 are experiencing an extraordinary improvement in CD4 T cell counts. This indicates a robust positive response to the treatment regimen: higher positive recovery rates are generally associated with better immune system restoration and improved CD4 T cell counts contribute to enhanced immune function, thus, reducing susceptibility to opportunistic infections.
+
+Long-term stability in CD4 T cell recovery, as indicated by the 2-year recovery rate, suggests sustained health benefits for these individuals which is consistent with positive trends over an extended period and are indicative of the effectiveness of the treatment protocol.
+
+
+# Session info
+
+```{r sessionInfo, echo=FALSE}
+sessionInfo()
+```

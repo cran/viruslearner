@@ -1,5 +1,4 @@
 test_that("`cd_stack()` plots as expected", {
-  local_edition(3)
   library(baguette)
   library(dials)
   library(dplyr)
@@ -30,5 +29,4 @@ test_that("`cd_stack()` plots as expected", {
     title = "cd stack",
     fig = cd_stack(outcome, traindata, viralvars, logbase, seed, repetitions, gridsize),
   )
-}
-)
+})

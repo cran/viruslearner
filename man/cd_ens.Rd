@@ -4,7 +4,17 @@
 \alias{cd_ens}
 \title{CD4 Cell Count or Viral Load Ensemble Learning Through Stacking of Models.}
 \usage{
-cd_ens(outcome, traindata, viralvars, logbase, seed, repetitions, gridsize)
+cd_ens(
+  outcome,
+  traindata,
+  viralvars,
+  logbase,
+  seed,
+  repetitions,
+  gridsize,
+  mode = TRUE,
+  type = TRUE
+)
 }
 \arguments{
 \item{outcome}{The name of the outcome variable.}
@@ -20,9 +30,13 @@ cd_ens(outcome, traindata, viralvars, logbase, seed, repetitions, gridsize)
 \item{repetitions}{Number of repetitions for cross-validation.}
 
 \item{gridsize}{Size of the grid for hyperparameter tuning.}
+
+\item{mode}{Is the mode of the model regression? "regression" (TRUE) or "classification" (FALSE).}
+
+\item{type}{Is the type of modeling ensemble? "ensemble" (TRUE) or "individual" (FALSE).}
 }
 \value{
-A stacked ensemble model.
+A stacked ensemble model or individual models based on the specified type.
 }
 \description{
 Stacking ensemble approach to combine predictions from various models,
@@ -43,6 +57,7 @@ logbase <- 10
 seed <- 1501
 repetitions <- 2
 gridsize <- 1
-cd_ens(outcome, traindata, viralvars, logbase, seed, repetitions, gridsize)
+set.seed(123)
+cd_ens(outcome, traindata, viralvars, logbase, seed, repetitions, gridsize, TRUE, TRUE)
 }
 }

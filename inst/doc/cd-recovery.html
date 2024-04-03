@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+
+
+<title>Cell recovery under antiretroviral therapy</title>
+
+<script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
+// be compatible with the behavior of Pandoc < 2.8).
+document.addEventListener('DOMContentLoaded', function(e) {
+  var hs = document.querySelectorAll("div.section[class*='level'] > :first-child");
+  var i, h, a;
+  for (i = 0; i < hs.length; i++) {
+    h = hs[i];
+    if (!/^h[1-6]$/i.test(h.tagName)) continue;  // it should be a header h1-h6
+    a = h.attributes;
+    while (a.length > 0) h.removeAttribute(a[0].name);
+  }
+});
+</script>
+
+<style type="text/css">
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+</style>
+
+
+
+<style type="text/css">
+code {
+white-space: pre;
+}
+.sourceCode {
+overflow: visible;
+}
+</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+{ counter-reset: source-line 0; }
+pre.numberSource code > span
+{ position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+{ content: counter(source-line);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+color: #aaaaaa;
+}
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; padding-left: 4px; }
+div.sourceCode
+{ }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } 
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.at { color: #7d9029; } 
+code span.bn { color: #40a070; } 
+code span.bu { color: #008000; } 
+code span.cf { color: #007020; font-weight: bold; } 
+code span.ch { color: #4070a0; } 
+code span.cn { color: #880000; } 
+code span.co { color: #60a0b0; font-style: italic; } 
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.do { color: #ba2121; font-style: italic; } 
+code span.dt { color: #902000; } 
+code span.dv { color: #40a070; } 
+code span.er { color: #ff0000; font-weight: bold; } 
+code span.ex { } 
+code span.fl { color: #40a070; } 
+code span.fu { color: #06287e; } 
+code span.im { color: #008000; font-weight: bold; } 
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.kw { color: #007020; font-weight: bold; } 
+code span.op { color: #666666; } 
+code span.ot { color: #007020; } 
+code span.pp { color: #bc7a00; } 
+code span.sc { color: #4070a0; } 
+code span.ss { color: #bb6688; } 
+code span.st { color: #4070a0; } 
+code span.va { color: #19177c; } 
+code span.vs { color: #4070a0; } 
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } 
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    var j = 0;
+    while (j < rules.length) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") {
+        j++;
+        continue;
+      }
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') {
+        j++;
+        continue;
+      }
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+
+
+
+
+<style type="text/css">body {
+background-color: #fff;
+margin: 1em auto;
+max-width: 700px;
+overflow: visible;
+padding-left: 2em;
+padding-right: 2em;
+font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 14px;
+line-height: 1.35;
+}
+#TOC {
+clear: both;
+margin: 0 0 10px 10px;
+padding: 4px;
+width: 400px;
+border: 1px solid #CCCCCC;
+border-radius: 5px;
+background-color: #f6f6f6;
+font-size: 13px;
+line-height: 1.3;
+}
+#TOC .toctitle {
+font-weight: bold;
+font-size: 15px;
+margin-left: 5px;
+}
+#TOC ul {
+padding-left: 40px;
+margin-left: -1.5em;
+margin-top: 5px;
+margin-bottom: 5px;
+}
+#TOC ul ul {
+margin-left: -2em;
+}
+#TOC li {
+line-height: 16px;
+}
+table {
+margin: 1em auto;
+border-width: 1px;
+border-color: #DDDDDD;
+border-style: outset;
+border-collapse: collapse;
+}
+table th {
+border-width: 2px;
+padding: 5px;
+border-style: inset;
+}
+table td {
+border-width: 1px;
+border-style: inset;
+line-height: 18px;
+padding: 5px 5px;
+}
+table, table th, table td {
+border-left-style: none;
+border-right-style: none;
+}
+table thead, table tr.even {
+background-color: #f7f7f7;
+}
+p {
+margin: 0.5em 0;
+}
+blockquote {
+background-color: #f6f6f6;
+padding: 0.25em 0.75em;
+}
+hr {
+border-style: solid;
+border: none;
+border-top: 1px solid #777;
+margin: 28px 0;
+}
+dl {
+margin-left: 0;
+}
+dl dd {
+margin-bottom: 13px;
+margin-left: 13px;
+}
+dl dt {
+font-weight: bold;
+}
+ul {
+margin-top: 0;
+}
+ul li {
+list-style: circle outside;
+}
+ul ul {
+margin-bottom: 0;
+}
+pre, code {
+background-color: #f7f7f7;
+border-radius: 3px;
+color: #333;
+white-space: pre-wrap; 
+}
+pre {
+border-radius: 3px;
+margin: 5px 0px 10px 0px;
+padding: 10px;
+}
+pre:not([class]) {
+background-color: #f7f7f7;
+}
+code {
+font-family: Consolas, Monaco, 'Courier New', monospace;
+font-size: 85%;
+}
+p > code, li > code {
+padding: 2px 0px;
+}
+div.figure {
+text-align: center;
+}
+img {
+background-color: #FFFFFF;
+padding: 2px;
+border: 1px solid #DDDDDD;
+border-radius: 3px;
+border: 1px solid #CCCCCC;
+margin: 0 5px;
+}
+h1 {
+margin-top: 0;
+font-size: 35px;
+line-height: 40px;
+}
+h2 {
+border-bottom: 4px solid #f7f7f7;
+padding-top: 10px;
+padding-bottom: 2px;
+font-size: 145%;
+}
+h3 {
+border-bottom: 2px solid #f7f7f7;
+padding-top: 10px;
+font-size: 120%;
+}
+h4 {
+border-bottom: 1px solid #f7f7f7;
+margin-left: 8px;
+font-size: 105%;
+}
+h5, h6 {
+border-bottom: 1px solid #ccc;
+font-size: 105%;
+}
+a {
+color: #0033dd;
+text-decoration: none;
+}
+a:hover {
+color: #6666ff; }
+a:visited {
+color: #800080; }
+a:visited:hover {
+color: #BB00BB; }
+a[href^="http:"] {
+text-decoration: underline; }
+a[href^="https:"] {
+text-decoration: underline; }
+
+code > span.kw { color: #555; font-weight: bold; } 
+code > span.dt { color: #902000; } 
+code > span.dv { color: #40a070; } 
+code > span.bn { color: #d14; } 
+code > span.fl { color: #d14; } 
+code > span.ch { color: #d14; } 
+code > span.st { color: #d14; } 
+code > span.co { color: #888888; font-style: italic; } 
+code > span.ot { color: #007020; } 
+code > span.al { color: #ff0000; font-weight: bold; } 
+code > span.fu { color: #900; font-weight: bold; } 
+code > span.er { color: #a61717; background-color: #e3d2d2; } 
+</style>
+
+
+
+
+</head>
+
+<body>
+
+
+
+
+<h1 class="title toc-ignore">Cell recovery under antiretroviral
+therapy</h1>
+
+
+
+<div id="introduction" class="section level1">
+<h1>Introduction</h1>
+<p>For the second quarter of 2023, it is estimated that 125,527 people
+living with human immunodeficiency virus (HIV) are on antiretroviral
+treatment with active status, according to the Secretary of Health in
+Mexico. CD4 T cells percentages at different times have been
+consistently identified as correlates of CD4 T cell recovery. CD4 T cell
+proportions, along with other accessible variables, could serve as
+predictors for the immunological response to antiretroviral therapy
+(ART) in patients with advanced HIV infection.</p>
+<p>To create accessible variables for predictors of CD4 T cell recovery
+and viral load, the <code>tidyverse</code> suite can be used for data
+transformation, and the <code>viraldomain</code> package can be used to
+access CD4 counts and viral load data. The goal is to calculate recovery
+rates for each consecutive year, taking both 2019 and 2021 as basal
+counts, considering one year and two year change rates.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="fu">library</span>(viraldomain)</span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a><span class="fu">data</span>(viral, <span class="at">package =</span> <span class="st">&quot;viraldomain&quot;</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a>recovery_rates <span class="ot">&lt;-</span> viral <span class="sc">|&gt;</span></span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a>    <span class="at">recovery_rate_2021 =</span> (cd_2021 <span class="sc">-</span> cd_2019) <span class="sc">/</span> cd_2019,</span>
+<span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a>    <span class="at">recovery_rate_2022 =</span> (cd_2022 <span class="sc">-</span> cd_2021) <span class="sc">/</span> cd_2021,</span>
+<span id="cb1-8"><a href="#cb1-8" tabindex="-1"></a>    <span class="at">recovery_rate_2022_2yr =</span> (cd_2022 <span class="sc">-</span> cd_2019) <span class="sc">/</span> cd_2019,</span>
+<span id="cb1-9"><a href="#cb1-9" tabindex="-1"></a>    <span class="at">viral_rate_2021 =</span> (vl_2021 <span class="sc">-</span> vl_2019) <span class="sc">/</span> (vl_2019<span class="sc">+</span><span class="dv">1</span>),</span>
+<span id="cb1-10"><a href="#cb1-10" tabindex="-1"></a>    <span class="at">viral_rate_2022 =</span> (vl_2022 <span class="sc">-</span> vl_2021) <span class="sc">/</span> (vl_2021<span class="sc">+</span><span class="dv">1</span>),</span>
+<span id="cb1-11"><a href="#cb1-11" tabindex="-1"></a>    <span class="at">viral_rate_2022_2yr =</span> (vl_2022 <span class="sc">-</span> vl_2019) <span class="sc">/</span> (vl_2019<span class="sc">+</span><span class="dv">1</span>)</span>
+<span id="cb1-12"><a href="#cb1-12" tabindex="-1"></a>  )</span></code></pre></div>
+</div>
+<div id="patient-data" class="section level1">
+<h1>Patient data</h1>
+<p>Data processing followed 35 patients under ART during three years:
+2019, 2021 and 2022. Twenty two patients had reached undetectable viral
+load (VL) by year 2022, and had available CD4 T cell counts at each
+year. Data were obtained from routine laboratory tests of HIV treatment
+follow-up.</p>
+<div class="float">
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASAAAAEgCAMAAAAjXV6yAAAAD1BMVEUAAAAzMzNNTU3r6+v///+EK80uAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAJVklEQVR4nO2diXasIBBEifH/v/m9zLgADXY3NIJYdZLMEiyYO+yguvWU+68VChUTAaNIFFCXZIwrj8cfGwdCkVzw9MsI8hQBWgEoUlDEnEMlFCsGlMHz8z5lAGX0k/tHSr+awPd5nR9aFHp7JDkozWgCQH62kATfHoV10PMBhQVHEH57PHE4txG6Ci6SJSBVxJdGBoBWAKIRxzlotDrIDFB1HbRVQLlmXpOUMQHVtmLzA9KlKwbkTl0Ft08Io6FyUL4KmgFQZR10nYEmAFTbin170QBEIj4BffvQ09ZBlYCOgfy0gEzGYudfEvy3kwwj/s9HEzoFKF9RT5CD6qc7JMFFGhNQfRGTBBdpSED1g9UVzXwqYmklrUnLtIDIOzS4yttCI9VBAJSKuEUdNCQgi0r6YtUQgD7P4xnphQRXeVtoJEC0FZsJUItKepkKkMHKavTOMlcOqpyT/jwPWzEA+lO+FVv2OuhTeBNzB4VSzlHogtuJH6wuf4p5EsBqKQ8cLAdFuihiAPQnAEoAEo7mXwpIPhZ7IaCrhVUA2pd7ugAq7jEoo67evLD2AmRndanaOqhbEXsKoM9L6crqEwEVjZcoDgAKApeui70OkHaH2esA7QKgKDDpSWeC52YD1ErMXxQD0s5g1E53aE5meWEOujydF4CYs50BCK1YJjD6QUxgAGICBzvt8+PVKaY7Kuugjs38IwD5LwTeAPRZGMt7v64OSgHy1n0AiAJaVgBauY4iADErqx9An/qQDHaL9eDRPOFDeZ5vGDY9T81BHh8ASsjng35QYs/CI/cH2WXsZCumSOeogHTBLw7MTLnKV1ZvKhdDAfq8NjjbpziV9V7NAZlceWFWQKrNC6rIKjQMoOs6GoC4qVcAsox4SkCWl8eZEpBlxK8E1GxawdarHFDOCUUsc2AyBylWNVSRVQiAbL0AqFXUAKQ9EICYA9GKMQeio8gcCEDMgYkittKnZRFPCWg9q6H99eXuDlVkFRoJUKzL3R2qyCo0MKDr3R2qyCo0DiDSyj8TUMOFw/jJAehzvNX0RWOVAyJOMaADHQGk/iI73jbCLANpcpAfvMWHGtOLr4PKW7E5Aa2khxj0g96nBCArdWzF7L0AiBEAMaKVdAtkD5Z/SmbHZIwrAGJkRWXvEXz7BnsPwX9e5+U7mlhJk2UOyPs5euOln4r8GFpJk5WYMFOWtS+EJX6xbF9SMGIp9vIdTazEyQoA7X9VhMi34cVeACjrpcxBvJUe0PGgzUJBSpYQkK6IXXkpixhv1QfQ4v3ulXTpp1qi37UcELUSOsUbyQvuZhykxM84tZ8qlQnNrKRG7uKVNCX0C17Sn67cK8gJFlZiH4tm3k/Jt0CV94MyXseZNQqvS6tFWvJTRQzylGzmS7SIv5Nbvaqtkq0YdAqAGKEOYhQ188ATixLpzqiusbDWgIC4K9HcqyEB6Yc77TQioGO87Jz34PqkbExAO5KdVcc8JdwGfLPO68e74KFHUvpEy2i/7bQ7ngBQoOAOBMhBVH4RcwBEdQByzn/okpQ+0TLaWoqjClpdp0Z+1FZsILn4OQCFwnwQIwBihAkzRpgwYwQijFDEGJmti80qtGKMAIgR6iBGaOYZgQgjFDFGaOYZXbZi5fvT59E1oMzPm0RnFM//fTf50b+bep8z2Vg5QBHAK0Dib8HizNwf9RXakxInJX31FwJoyQD6ML79igG3RkgBJfLQuTe9cw4Ks32FKnPQSvkA0PaY6AUF2+ZpK/Y6QLQV87fN037QrZW0ER8LQOKe9OtaMbdyd9dIWximqrlJZQ469napLAxT1dxk4iI2ACDvQWVhmKrmJgY9aQD6SjoWE1gYpqq5ST0gRVxPufBbmQwusPSuHHTe61kc17sAHXvZ0cx/lbyOor87WW7BaxpA0TOhBa8ZACXnO2QWvKYAlNZ58Y3O0x2DACK4gmuBdJwwszKpA0SXNM7rX3Rf1egOKN0DOooVAKVr5+PyLb2XfW5X8qL/aUBrApDPmNcUOejzIllJrwCU1/K9UFH3ZR8rkypAqRmPq+0v7wOkjAuAhBa8JgG0KicVXwdIuzvxfYCUcb0PEHKQJ2EzL7EwTFVzE/OO4qVF7+FSU2HZhxGKGCO0YowAiBF60ozQD2IkLGKY7hBMuWLCbH+a2ig9yE77/tuAMxoG0BAbyRPBcoDuXvbZTkW4M8YIUAbSKDmo/7kau+ikPQAFivLQMK1Y9zpo3XbhraMu+xi1YmKTdEdRdUHHR/aDagGtABQFjDqK0+9yrQGUfG0Rl83NUgcB1CKuKQA1PV9sBkAt43otIPm4puGYSSlxUlDEhAFRxJiAzwFkYlIH6HvGmH1cswByx3DMOK65ALUYi90NqOqSU1F0AkD1Z/vcDsjAP7+ySo6sP9tnkhxEXm2Snu1jkKrLT60I2ghQZrpMerZPST4hx5hQbgQod06m9GyfolTlevgqyhYmsUt+bT69PHZXEbMxUbJJHQRAzEHyVkx8ts9AdVBBSiSAMt1o6bKPDaBeJjJANY4AxCUDgJhkABCTDJv6ddRKugDUwGMxA38AYg6aG5BBQbVY1ZCuoNgs+9isHZUv+8i/n5ixZcjWJhVLzw3jAiBOJkta/Sftm8U1EyANr0cCwuWSrVxIDgpu8a6y4DUFIOUW1/WFgMg2e6EFr2kAKXPQ3CogUqwndhR3nYD0V9wWawpAG5omhGYAdIK5pdA9R3QsBkCBAIhRM0DHAmO44hivPpa4+F6VJnxSKsZi0lQFa9bnKYzlLr5XpQmfFPMCte/X2+MNdj14W43KXXyvShNBUuwBbREvwXtHSqSArl1kOUhkIgZkdCNjvxwd74WABPmadZEAEpoIATlaWxcpkarFf2erGfWfbYl+1xJA1IStx6xbsS8AP+YwnfLPlnfx65RKE76eN2/m44K/eG/HyStzCT9vlQnPJ1HEagHFTYe/D/0oYjUuy/4+C4g1WfjSHg9W0ZGO1HC6YxF8Pze5VJggwzACIEYAxAiAGA0NyGj4U5eGnpGzUq/2NkrCsNJdjqZNErrGzmpfDT/un/c9afTGVI8OaEfin5R9a54aHJC36cQFD/cl4M7ICnTco9u7WTcAeQq2LSEHUflFzAEQ1QHIOf/hxgTcGVmBjj0VWxX09wYAjSQAYgRAjACIEQAxAiBGAMQIgBgBECMAYgRAjP4BSXXCryzKcFEAAAAASUVORK5CYII=" alt="Cohort’s response to ART from 2019 to 2022. A, Viral load (HIV RNA copies/mL blood). B, CD4 T cell count (cells/mm3 blood)" />
+<div class="figcaption">Cohort’s response to ART from 2019 to 2022. A,
+Viral load (HIV RNA copies/mL blood). B, CD4 T cell count (cells/mm3
+blood)</div>
+</div>
+<p>Figure 1 A shows viral loads in 2019 have a range from 0 to 38961,
+with a median of 93. In 2021, there is a notable increase in viral
+loads, with a median of 262 and a maximum of 516675. Viral loads in 2022
+show a similar pattern to 2021, with some patients having high
+values.</p>
+<p>The majority of patients had non-zero viral loads in 2019, with a
+wide range. In 2021, there is a substantial increase in viral loads for
+several patients. Viral loads in 2022 show variability, with the mean
+behavior achieving undetectable viral load and many patients showing low
+values and few others showing persistence with previous years, though
+these values act as outliers and they could be due to random noise in
+the cohort since they belong to patients with viral loads higher than
+average.</p>
+<p>In Figure 1 B, the median CD4 count in 2019 is 494, showing a central
+tendency. In 2021, the median CD4 count is 454, indicating relatively
+stable counts compared to 2019. The median CD4 count in 2022 is 547,
+showing a potential increase compared to 2021.</p>
+<p>One patient stands out with a remarkably high CD4 count of 1960 in
+2021, potentially indicating a unique response to treatment. Only two
+patients maintain relatively stable CD4 counts over the observed years,
+one patient experiences a significant drop in CD4 count from 2021 to
+2022, but the rest of the cohort shows a cell count increase.</p>
+<div class="float">
+<img src="data:image/png;base64,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" alt="Patterns of HIV Viral Dynamics in Response to Treatment. A, Viral Load Change Rates Across Years. B, Longitudinal Analysis of CD4 T Cell Recovery Rates Over Time." />
+<div class="figcaption">Patterns of HIV Viral Dynamics in Response to
+Treatment. A, Viral Load Change Rates Across Years. B, Longitudinal
+Analysis of CD4 T Cell Recovery Rates Over Time.</div>
+</div>
+<p>Now, Figure 2 A displays the viral change rates, exhibiting diverse
+patterns across patients. Notable variations are observed in the 1-year
+and 2-year differences. The longitudinal trends for the 2021 viral rates
+show a range from -0.99 to 49248.00, indicating significant variability.
+The majority of values are negative, with some extreme positive values,
+indicating a stabilization towards undetectable load but with some
+persistence on viral activity. The 2022 viral rate ranges from -0.9999
+to 79.5529, showcasing a diminished spectrum. Positive values indicate
+an increase, while negative values suggest a decrease, with the mean
+behavior pointing towards an overall decrease in rates. The 2022 viral
+rate with a 2-Year difference also exhibits a wide range from -1.00 to
+49248.00, emphasizing the impact of longer-term changes. Notable
+positive and negative values reflect diverse responses. Seasonality
+shows some patients with consistent trends over the short term, while
+others exhibit fluctuations over a more extended period. Short-term
+seasonality is evident in rapid changes, while long-term patterns vary
+widely. Extreme values, such as 49248.00, may indicate outliers or
+specific responses to treatment interventions and potential influencing
+factors.</p>
+<p>In Figure 2 B, CD4 T cell count recovery rates show a range of
+positive and negative values, showing a substantial variability is
+observed across patients, reflecting diverse responses to treatment. The
+longitudinal trend for the 2021 recovery rate ranges from -0.70250 to
+2.52518, both positive and negative values indicate varying rates of
+improvement or decline. The 2022 recovery rate ranges from -0.61631 to
+1.27523. The mean suggests an overall positive trend, with more patients
+experiencing improvement. The 2022 recovery rate with a 2-Year
+difference presents a range from -0.628655 to 0.741935, emphasizing
+longer-term changes. The mean is close to zero, suggesting a stabilizing
+effect over the two-year period. Short-term fluctuations in recovery
+rates may be indicative of response variations to ART interventions.
+Long-term stability, as indicated by the mean of the 2-year recovery
+rate, suggests a potential stabilizing effect of ART.</p>
+<p>The effect on the mean recovery rate for 2022 (2-Year) being close to
+zero may indicate a stabilizing effect of ART on CD4 T cell counts over
+a longer duration. THe majority of patients show consistent positive
+recovery trends, while others exhibit fluctuations. Extreme positive
+values indicate a substantial increase in cell recovery, which can be
+considered beneficial for overall health. These high positive values
+suggest a significant improvement in CD4 T cell counts for the
+corresponding patients. Patients with recovery rates significantly above
+the mean and closer to 2.52518 are experiencing an extraordinary
+improvement in CD4 T cell counts. This indicates a robust positive
+response to the treatment regimen: higher positive recovery rates are
+generally associated with better immune system restoration and improved
+CD4 T cell counts contribute to enhanced immune function, thus, reducing
+susceptibility to opportunistic infections.</p>
+<p>Long-term stability in CD4 T cell recovery, as indicated by the
+2-year recovery rate, suggests sustained health benefits for these
+individuals which is consistent with positive trends over an extended
+period and are indicative of the effectiveness of the treatment
+protocol.</p>
+</div>
+<div id="session-info" class="section level1">
+<h1>Session info</h1>
+<pre><code>## R version 4.3.2 (2023-10-31)
+## Platform: x86_64-pc-linux-gnu (64-bit)
+## Running under: Ubuntu 23.10
+## 
+## Matrix products: default
+## BLAS:   /usr/local/lib/R/lib/libRblas.so 
+## LAPACK: /usr/local/lib/R/lib/libRlapack.so;  LAPACK version 3.11.0
+## 
+## locale:
+##  [1] LC_CTYPE=es_ES.UTF-8       LC_NUMERIC=C              
+##  [3] LC_TIME=es_ES.UTF-8        LC_COLLATE=C              
+##  [5] LC_MONETARY=es_ES.UTF-8    LC_MESSAGES=es_ES.UTF-8   
+##  [7] LC_PAPER=es_ES.UTF-8       LC_NAME=C                 
+##  [9] LC_ADDRESS=C               LC_TELEPHONE=C            
+## [11] LC_MEASUREMENT=es_ES.UTF-8 LC_IDENTIFICATION=C       
+## 
+## time zone: America/Mexico_City
+## tzcode source: system (glibc)
+## 
+## attached base packages:
+## [1] stats     graphics  grDevices utils     datasets  methods   base     
+## 
+## other attached packages:
+##  [1] viraldomain_0.0.3  broom_1.0.5        ggpubr_0.6.0       factoextra_1.0.7  
+##  [5] cowplot_1.1.2      lubridate_1.9.3    forcats_1.0.0      stringr_1.5.1     
+##  [9] dplyr_1.1.4        purrr_1.0.2        readr_2.1.4        tidyr_1.3.1       
+## [13] tibble_3.2.1       ggplot2_3.5.0      tidyverse_2.0.0    FactoMineR_2.9    
+## [17] viruslearner_0.0.2
+## 
+## loaded via a namespace (and not attached):
+##   [1] kknn_1.3.1           sandwich_3.1-0       rlang_1.1.3         
+##   [4] magrittr_2.0.3       applicable_0.1.0     multcomp_1.4-25     
+##   [7] compiler_4.3.2       mgcv_1.9-0           vctrs_0.6.5         
+##  [10] pkgconfig_2.0.3      fastmap_1.1.1        backports_1.4.1     
+##  [13] labeling_0.4.3       utf8_1.2.4           rmarkdown_2.25      
+##  [16] prodlim_2023.08.28   tzdb_0.4.0           xfun_0.43           
+##  [19] cachem_1.0.8         jsonlite_1.8.8       flashClust_1.01-2   
+##  [22] recipes_1.0.10       highr_0.10           parallel_4.3.2      
+##  [25] cluster_2.1.4        R6_2.5.1             bslib_0.6.1         
+##  [28] stringi_1.8.3        parallelly_1.37.1    rpart_4.1.21        
+##  [31] car_3.1-2            jquerylib_0.1.4      estimability_1.4.1  
+##  [34] Rcpp_1.0.12          knitr_1.45           future.apply_1.11.1 
+##  [37] zoo_1.8-12           Matrix_1.6-1.1       splines_4.3.2       
+##  [40] nnet_7.3-19          igraph_1.6.0         timechange_0.3.0    
+##  [43] tidyselect_1.2.0     rstudioapi_0.15.0    abind_1.4-5         
+##  [46] yaml_2.3.8           timeDate_4032.109    vdiffr_1.0.7        
+##  [49] codetools_0.2-19     listenv_0.9.1        lattice_0.21-9      
+##  [52] withr_3.0.0          evaluate_0.23        future_1.33.1       
+##  [55] survival_3.5-7       RcppParallel_5.1.7   pillar_1.9.0        
+##  [58] TeachingDemos_2.12   carData_3.0-5        DT_0.31             
+##  [61] generics_0.1.3       hms_1.1.3            munsell_0.5.0       
+##  [64] scales_1.3.0         globals_0.16.2       plotmo_3.6.2        
+##  [67] xtable_1.8-4         leaps_3.1            class_7.3-22        
+##  [70] glue_1.7.0           emmeans_1.9.0        scatterplot3d_0.3-44
+##  [73] proxyC_0.3.4         tools_4.3.2          data.table_1.15.2   
+##  [76] gower_1.0.1          ggsignif_0.6.4       mvtnorm_1.2-4       
+##  [79] grid_4.3.2           plotrix_3.8-4        ipred_0.9-14        
+##  [82] colorspace_2.1-0     nlme_3.1-163         earth_5.3.2         
+##  [85] Formula_1.2-5        cli_3.6.2            workflows_1.1.4     
+##  [88] parsnip_1.2.0        fansi_1.0.6          lava_1.8.0          
+##  [91] gtable_0.3.4         rstatix_0.7.2        sass_0.4.8          
+##  [94] digest_0.6.35        ggrepel_0.9.4        TH.data_1.1-2       
+##  [97] htmlwidgets_1.6.4    farver_2.1.1         htmltools_0.5.7     
+## [100] lifecycle_1.0.4      hardhat_1.3.1        multcompView_0.1-9  
+## [103] MASS_7.3-60</code></pre>
+</div>
+
+
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

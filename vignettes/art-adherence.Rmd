@@ -1,0 +1,155 @@
+---
+title: "Trajectories of overall adherence to antiretroviral therapy"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{art-adherence}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+# Introduction
+
+Principal component analysis (PCA) provides an effective statistical approach for exploiting the patterns in CD4 count and viral load data over time. The method defines a new variable related to adherence to antiretroviral therapy (ART) that captures information from longitudinal data using feature extraction properties of PCA which is demonstrated using data from patients who acquired HIV-1 during follow-up in an ART cohort and were subsequently followed prospectively from early infection.
+
+The PCA scores for each patient obtained by this method serve as informative summary statistics for the CD4-count
+and viral-load trajectories. Similar to baseline CD4 count or viral load, the first PCA score can be interpreted as a single-value summary measure of an individual's overall treatment response to ART, but unlike most single-value summaries of CD4-count or viral-load trajectories, the first PCA score summarizes the dynamics of these quantities and reveals specific features of the trajectories associated with the effectiveness of the adherence of ART. Moreover, PCA scores are used as powerful prognostic factor than other common summaries when used in predictive analysis.
+
+Doing a PCA under tidy principles requires running the function `PCA()` from `FactoMineR` package on the matrix of scaled numeric predictor variables, and then visualizing the result nicely using the `factoextra` package.
+
+In general, when performing PCA, three things are wanted: 1) Look at the data in PC coordinates; 2) Look at the rotation matrix; and 3) Look at the variance explained by each principal component (PC).
+
+```{r setup}
+library(viruslearner)
+```
+
+```{r coords, message=FALSE}
+library(FactoMineR)
+data(viral_new, package = "viruslearner")
+res_pca <- PCA(viral_new, graph = FALSE)
+print(res_pca)
+```
+
+To look at the data in PC coordinates requires combining the PC coordinates with the original dataset. This is done via the `res_pca$ind$coord` object. The columns containing the fitted coordinates are called `Dim.1`, `Dim.2`, etc.
+
+The transformation of variables shown in Figure \@ref(fig:plotcoords), in which PCA scores are prognostic factors, reflects the clinical belief that adherence to ART may be affected by the change and other patterns of CD4 counts
+and viral loads over time. The approach uses PCA with data from the entire cohort to extract the primary
+structure in individual trajectories and provides a concise summary of each trajectory (PCA score) to reveal clinical features of the CD4 and viral load trajectories that serve as an ART adherence transformed predictor variable.
+
+```{r plotcoords, echo = FALSE, message = FALSE, fig.cap="PC1 vs PC2 dispersion. Specific features of the shape of ART trajectory as prognostic factor for overall treatment."}
+library(tidyverse)
+library(cowplot)
+res_pca$ind$coord |>
+    bind_cols(viral_new) |>
+  ggplot(aes(x = Dim.1, y = Dim.2)) +
+  geom_point(size = 1.5) +
+  theme_half_open(12) + 
+  background_grid()
+```
+
+# Rotation matrix
+
+The rotation matrix is stored as the `res_pca$var$coord` object. The rotation matrix is essential for understanding the relationship between original variables and principal components.
+
+```{r rotation}
+res_pca$var$coord
+```
+
+A negative value indicates an inverse relationship with each PC. Patients with lower baseline CD4 counts contribute more to the negative direction of PC's. A positive value suggests a positive relationship with each PC. Patients with higher baseline viral loads contribute more to the positive direction of PC's.
+
+Figure \@ref(fig:plotrot) shows the rotation matrix in the context of a plot. The correlation between a variable and a PC is used as the coordinates of the variable on the PC. The correlation circle plot shows the relationships
+between all variables, with positively correlated variables shown grouped together, negatively correlated variables are positioned on opposite sides of the plot origin (opposed quadrants), and the distance between variables and the origin measures the quality of the variables on the factor map.
+
+```{r plotrot, echo = FALSE, message = FALSE, fig.cap="Distribution of patients in the PC1 vs PC2 space. Contributions of baseline and longitudinal measures are reflected by the directions and magnitudes of the arrows."}
+library(factoextra)
+var_pca <- get_pca_var(res_pca)
+fviz_pca_var(res_pca, col.var = "black")
+```
+
+Patients with lower baseline values are positioned more towards the negative direction of PC1 and patients with higher baseline values are positioned more towards the positive direction of PC1. Patients with slightly decreasing baseline values are positioned more towards the negative direction of PC2, and those with slightly increasing baseline values are positioned more towards the positive direction of PC2.
+
+Patients with similar patterns in CD4 counts and viral loads are likely to cluster together in the PC1 vs PC2 dispersion graph with the direction of the contribution values indicating how each variable influences the position of patients along PC1 and PC2 axes. Lower baseline CD4 counts, higher baseline viral loads, decreasing CD4 counts, and decreasing viral loads tend to be grouped together based on the negative directions of PC1 and PC2. Conversely, slightly decreasing baseline CD4 counts, slightly increasing baseline viral loads, decreasing CD4 counts, and increasing viral loads are grouped together based on the positive directions of PC1 and PC2.
+
+# Variance explained by each PC
+
+The variance explained by each PC can be extracted via the function `get_eigenvalue`.
+
+```{r varpc}
+eig_val <- get_eigenvalue(res_pca)
+eig_val
+```
+
+And is shown in the context of a plot in Figure \@ref(fig:plotvarpc).
+
+```{r plotvarpc, echo = FALSE, message = FALSE, fig.cap="Variance captured by each PC. Together, PC1 and PC2 provide structure into the factors influencing ART adherence and treatment effectiveness."}
+fviz_eig(res_pca, addlabels = TRUE)
+```
+
+The first component captures 45.2% of the variation in the data and together with the second component approximately 80% of the variability is captured. Eigenvalue greater than 1 indicate those PCs that account for more variance than accounted by one of the original variables in standarized data, so it becomes a commonly used cutoff point for which PCs are retained.
+
+# PC's and other variables in the data
+
+The association of the outcome features (cd_2022 and vl_2022) of the data with the first two principal components is shown in the scatter plots of Figure \@ref(fig:outvspc).
+
+```{r outvspc, echo = FALSE, message = FALSE, warning = FALSE, fig.cap="Outcome variables vs first two PC's. A, Association of PC1 with cd_2022. B, Association of PC1 with vl_2022. C, Association of PC2 with cd_2022. D, Association of PC2 with vl_2022."}
+library(ggpubr)
+library(broom)
+pca_fit <- viral_new |> 
+  scale() |>
+  prcomp()
+variance_exp <- pca_fit |>  
+  tidy("pcs") |> 
+  pull(percent)
+variance_exp <- pca_fit |>  
+  tidy("pcs") |> 
+  pull(percent)
+ggarrange(
+  res_pca$ind$coord |>
+    bind_cols(viral_new) |>
+    ggplot(aes(x = Dim.1, y = cd_2023)) +
+    geom_point() +
+    geom_smooth(method = "lm") +
+    labs(x = paste0("PC1: ", round(variance_exp[1]*100), "%"),
+         y = "CD4T cells/mm blood") +
+    theme_minimal_hgrid(12),
+  res_pca$ind$coord |>
+    bind_cols(viral_new) |>
+    ggplot(aes(x = Dim.1, y = log10(vl_2023 + 1))) +
+    geom_point() +
+    geom_smooth(method = "lm") +
+    labs(x = paste0("PC1: ", round(variance_exp[1]*100), "%"),
+         y = "Log(HIV RNA copies/ml)") +
+    theme_minimal_hgrid(12),
+  res_pca$ind$coord |>
+    bind_cols(viral_new) |>
+    ggplot(aes(x = Dim.2, y = cd_2023)) +
+    geom_point() +
+    geom_smooth(method = "lm") +
+    labs(x = paste0("PC2: ", round(variance_exp[2]*100), "%"),
+         y = "CD4T cells/mm blood") +
+    theme_minimal_hgrid(12),
+  res_pca$ind$coord |>
+    bind_cols(viral_new) |>
+    ggplot(aes(x = Dim.2, y = log10(vl_2023 + 1))) +
+    geom_point() +
+    geom_smooth(method = "lm") +
+    labs(x = paste0("PC2: ", round(variance_exp[2]*100), "%"),
+         y = "Log(HIV RNA copies/ml)") +
+    theme_minimal_hgrid(12),
+  labels = c("A", "B", "C", "D"), nrow = 2, ncol = 2
+  )
+```
+
+# Individual coordinates as scores
+
+The extracted coordinates for the individual observations serve as the transformed variable for scoring the adherence to ART. These values get stored in the `res_pca$ind$coord` object.
+
+```{r corpc}
+res_pca$ind$coord
+```
